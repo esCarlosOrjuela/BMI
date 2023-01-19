@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModels="clr-namespace:Code.MVVM.ViewModels"
+             xmlns:SyncfGauges="clr-namespace:Syncfusion.Maui.Gauges;assembly=Syncfusion.Maui.Gauges"
+             x:Class="Code.MVVM.Views.BMIView"
+             x:DataType="{x:Type ViewModels:BMIViewModel}"
+             Title="BMIView">
+
+    <ScrollView>
+        <ScrollView.Background>
+            <LinearGradientBrush EndPoint="0,1">
+                <GradientStop Offset="0.0" Color="#572375" />
+                <GradientStop Offset="1" Color="#a594f9" />
+            </LinearGradientBrush>
+        </ScrollView.Background>
+
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <!--#region Height-->
+            <Frame>
+                <VerticalStackLayout>
+                    <Label
+                        FontSize="Medium"
+                        TextColor="Gray"
+                        Text="Height (cm)"
+                        HorizontalOptions="Center"/>
+
+                    <Label
+                        FontSize="Small"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        TextColor="DarkSlateGray"
+                        Text="{Binding BMI.Height, Mode=TwoWay, StringFormat='{0:0}'}"/>
+
+                    <SyncfGauges:SfLinearGauge
+                        Minimum="25"
+                        Maximum="250"
+                        Interval="50"
+                        Margin="0,15,0,0">
+                        <SyncfGauges:SfLinearGauge.MarkerPointers>
+                            <SyncfGauges:LinearShapePointer
+                                Position="Cross"
+                                Fill="#ff0074e3"
+                                ShapeType="Circle"
+                                IsInteractive="True"
+                                Value="{Binding BMI.Height, Mode=TwoWay}"
+                                >
+                            </SyncfGauges:LinearShapePointer>
+                        </SyncfGauges:SfLinearGauge.MarkerPointers>
+                    </SyncfGauges:SfLinearGauge>
+                </VerticalStackLayout>
+            </Frame>
+            <!--#endregion-->
+
+            <!--#region Width-->
+            <Frame>
+                <VerticalStackLayout>
+                    <Label
+                        FontSize="Medium"
+                        TextColor="Gray"
+                        Text="Width (kg)"
+                        HorizontalOptions="Center"/>
+
+                    <Label
+                        FontSize="Small"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        TextColor="DarkSlateGray"
+                        Text="{Binding BMI.Weight, Mode=TwoWay, StringFormat='{0:0}'}"/>
+
+                    <SyncfGauges:SfLinearGauge
+                        Margin="0,15,0,0"
+                        Minimum="25"
+                        Maximum="250"
+                        Interval="50">
+                        <SyncfGauges:SfLinearGauge.MarkerPointers>
+                            <SyncfGauges:LinearShapePointer
+                                Position="Cross"
+                                Fill="#ff0074e3"
+                                IsInteractive="True"
+                                ShapeType="Rectangle"
+                                Value="{Binding BMI.Weight, Mode=TwoWay}" >
+                            </SyncfGauges:LinearShapePointer>
+                        </SyncfGauges:SfLinearGauge.MarkerPointers>
+                    </SyncfGauges:SfLinearGauge>
+                </VerticalStackLayout>
+            </Frame>
+            <!--#endregion-->
+
+            <!--#region Result-->
+            <Frame>
+                <VerticalStackLayout>
+                    <Label
+                        FontSize="Medium"
+                        TextColor="Gray"
+                        Text="{Binding BMI.ResultToString}"
+                        HorizontalOptions="Center"/>
+                    <SyncfGauges:SfRadialGauge HeightRequest="270">
+                        <SyncfGauges:SfRadialGauge.Axes>
+                            <SyncfGauges:RadialAxis
+                                Minimum="0"
+                                Maximum="50"
+                                ShowTicks="False"
+                                ShowAxisLine="False"
+                                ShowFirstLabel="False">
+                                <SyncfGauges:RadialAxis.Ranges>
+                                    <SyncfGauges:RadialRange
+                                        EndValue="16"
+                                        EndWidth="0.65"
+                                        Fill="#282E5A"
+                                        StartValue="0"
+                                        StartWidth="0.65"
+                                        WidthUnit="Factor" />
+                                    <SyncfGauges:RadialRange
+                                        EndValue="17"
+                                        EndWidth="0.65"
+                                        Fill="#616FD9"
+                                        StartValue="16"
+                                        StartWidth="0.65"
+                                        WidthUnit="Factor" />
+                                    <SyncfGauges:RadialRange
+                                        EndValue="18.5"
+                                        EndWidth="0.65"
+                                        Fill="#418B45"
+                                        StartValue="17"
+                                        StartWidth="0.65"
+                                        WidthUnit="Factor" />
+                                    <SyncfGauges:RadialRange
+                                        EndValue="25"
+                                        EndWidth="0.65"
+                                        Fill="#A9DF51"
+                                        StartValue="18.5"
+                                        StartWidth="0.65"
+                                        WidthUnit="Factor" />
+                                    <SyncfGauges:RadialRange
+                                        EndValue="30"
+                                        EndWidth="0.65"
+                                        Fill="#F68F30"
+                                        StartValue="25"
+                                        StartWidth="0.65"
+                                        WidthUnit="Factor" />
+                                    <SyncfGauges:RadialRange
+                                        EndValue="35"
+                                        EndWidth="0.65"
+                                        Fill="#D35E5B"
+                                        StartValue="30"
+                                        StartWidth="0.65"
+                                        WidthUnit="Factor" />
+                                    <SyncfGauges:RadialRange
+                                        EndValue="40"
+                                        EndWidth="0.65"
+                                        Fill="#c21913"
+                                        StartValue="35"
+                                        StartWidth="0.65"
+                                        WidthUnit="Factor" />
+                                    <SyncfGauges:RadialRange
+                                        EndValue="50"
+                                        EndWidth="0.65"
+                                        Fill="#690b08"
+                                        StartValue="40"
+                                        StartWidth="0.65"
+                                        WidthUnit="Factor" />
+                                    <SyncfGauges:RadialRange
+                                        EndValue="100"
+                                        StartValue="0"
+                                        EndWidth="0.15"
+                                        StartWidth="0.15"
+                                        Fill="#4D9b9b9b"
+                                        RangeOffset="0.63"
+                                        WidthUnit="Factor"
+                                        OffsetUnit="Factor"
+                                        />
+                                </SyncfGauges:RadialAxis.Ranges>
+                                <SyncfGauges:RadialAxis.Pointers>
+                                    <SyncfGauges:NeedlePointer
+                                        x:Name="pointer"
+                                        KnobRadius="15"
+                                        NeedleLength="0.6"
+                                        NeedleEndWidth="15"
+                                        NeedleStartWidth="2"
+                                        KnobSizeUnit="Pixel"
+                                        Value="{Binding BMI.Result}"
+                                        />
+                                </SyncfGauges:RadialAxis.Pointers>
+                            </SyncfGauges:RadialAxis>
+                        </SyncfGauges:SfRadialGauge.Axes>
+
+                    </SyncfGauges:SfRadialGauge>
+                </VerticalStackLayout>
+            </Frame>
+            <!--#endregion-->
+
+            <Grid
+                ColumnDefinitions="*,*"
+                HorizontalOptions="FillAndExpand"
+                >
+                <Button
+                    Grid.Column="0"
+                    Text="Go Back"
+                    WidthRequest="100"
+                    Clicked="Button_Clicked"
+                    HorizontalOptions="Start"
+                    />
+
+                <Button
+                    Grid.Column="1"
+                    Text="Next"
+                    WidthRequest="100"
+                    HorizontalOptions="End"
+                    Clicked="Button_Clicked"
+                    />
+            </Grid>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+
+
+    <!--#region Height-->
+
+    <!--#endregion-->
+
+</ContentPage>
